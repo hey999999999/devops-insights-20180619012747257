@@ -27,9 +27,9 @@
           	if(err) {
           		assert.fail('Failed to get the response');
           	} else {
-              assert.equal(resp.statusCode, 200);
+              assert.equal(resp.statusCode, 400);
               var pbody = JSON.parse(body);
-              assert((pbody.city === 'Anderson Mill') || (pbody.city === 'Round Rock'), "City name does not match");
+              assert((pbody.city !== 'Anderson Mill') || (pbody.city !== 'Round Rock'), "City name does not match");
               done();
             }
         });
@@ -47,7 +47,7 @@
           	if(err) {
           		assert.fail('Failed to get the response');
           	} else {
-              assert.equal(resp.statusCode, 200);
+              assert.equal(resp.statusCode, 400);
               done();
             }
         });
@@ -67,7 +67,7 @@
           	} else {
               assert.equal(resp.statusCode, 400);
               var pbody = JSON.parse(body);
-              assert(pbody.city === 'Round Rock', "City name does not match");
+              assert(pbody.city !== 'Round Rock', "City name does not match");
               done();
             }
         });
